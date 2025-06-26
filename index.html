@@ -70,6 +70,8 @@
       width: 100%;
       height: auto;
       display: none;
+      transition: opacity 1s ease-in-out;
+      z-index: 0;
     }
     .slider img:first-child {
       display: block;
@@ -114,9 +116,11 @@
 
     <div class="car-card">
       <div class="slider">
-        <img src="https://via.placeholder.com/600x400?text=Toyota+Wish+2011+1" alt="Toyota Wish 2011 - Image 1">
-        <img src="https://via.placeholder.com/600x400?text=Toyota+Wish+2011+2" alt="Toyota Wish 2011 - Image 2">
-        <img src="https://via.placeholder.com/600x400?text=Toyota+Wish+2011+3" alt="Toyota Wish 2011 - Image 3">
+        <img class="slide" src="images/wish1.jpg" alt="Toyota Wish 2011 - Image 1">
+        <img class="slide" src="images/wish2.jpg" alt="toyota wish 2">
+        <img class="slide" src="images/wish3.jpg" alt="Toyota Wish 2011 - Image 3">
+                <img class="slide" src="images/wish4.jpg" alt="Toyota Wish 2011 - Image 3">
+
       </div>
       <div class="car-info">
         <h3>Toyota Wish 2011</h3>
@@ -126,5 +130,22 @@
       </div>
     </div>
   </section>
+  <script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll(".slider .slide");
+
+  function showSlide(index) {
+    slides.forEach(slide => slide.style.display = "none");
+    slides[index].style.display = "block";
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  // Automatically change slides every 3 seconds
+  setInterval(nextSlide, 2200);
+</script>
 </body>
 </html>
